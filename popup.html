@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Baixar autos do PJe</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Baixar autos em lote</h1>
+    <span class="sub">PJe 1º grau · TJPI</span>
+  </header>
+
+  <section id="entrada">
+    <label for="lista">Números dos processos <small>(um por linha, ou colados de qualquer jeito)</small></label>
+    <textarea id="lista" rows="7" placeholder="0800992-39.2024.8.18.0056&#10;0803585-07.2025.8.18.0056&#10;..."></textarea>
+    <div class="contagem" id="contagem">0 processos reconhecidos</div>
+
+    <details>
+      <summary>Opções do download</summary>
+      <div class="grade">
+        <label>Cronologia
+          <select id="cronologia">
+            <option value="ASC">Crescente (mais antigo primeiro)</option>
+            <option value="DESC">Decrescente (padrão do PJe)</option>
+          </select>
+        </label>
+        <label>Incluir expedientes
+          <select id="expedientes"><option value="false">Não</option><option value="true">Sim</option></select>
+        </label>
+        <label>Incluir movimentos
+          <select id="movimentos"><option value="false">Não</option><option value="true">Sim</option></select>
+        </label>
+        <label>Subpasta em Downloads
+          <input id="pasta" type="text" value="PJe-autos">
+        </label>
+        <label>Intervalo entre processos (s)
+          <input id="intervalo" type="number" min="1" max="120" value="5">
+        </label>
+        <label>Espera máx. p/ gerar PDF (s)
+          <input id="tempoGeracao" type="number" min="30" max="1800" value="300">
+        </label>
+        <label>Espera máx. p/ baixar (s)
+          <input id="tempoDownload" type="number" min="30" max="3600" value="900">
+        </label>
+        <label class="check"><input id="manterAba" type="checkbox"> Manter a aba de trabalho aberta ao final</label>
+      </div>
+    </details>
+
+    <div class="botoes">
+      <button id="btnIniciar" class="primario">Iniciar</button>
+      <button id="btnParar">Parar</button>
+      <button id="btnRetomar" title="Continua os pendentes/interrompidos">Retomar</button>
+      <button id="btnRepetir" title="Tenta de novo os que deram erro ou não foram encontrados">Repetir falhas</button>
+    </div>
+  </section>
+
+  <section id="andamento">
+    <div class="resumo" id="resumo">Nenhuma execução.</div>
+    <div class="barra"><div id="progresso"></div></div>
+    <table>
+      <thead><tr><th>Processo</th><th>Situação</th><th>Detalhe</th></tr></thead>
+      <tbody id="itens"></tbody>
+    </table>
+    <div class="botoes pequenos">
+      <button id="btnCsv">Exportar relatório (CSV)</button>
+      <button id="btnLimpar">Limpar</button>
+    </div>
+    <details>
+      <summary>Registro detalhado</summary>
+      <pre id="log"></pre>
+    </details>
+  </section>
+
+  <footer>Use com o PJe já logado neste navegador. A extensão apenas repete os cliques da tela de consulta e do botão “Download autos do processo”.</footer>
+  <script src="popup.js"></script>
+</body>
+</html>

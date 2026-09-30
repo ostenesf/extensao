@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "PJe TJPI – Baixar autos em lote",
+  "version": "1.0.0",
+  "description": "Baixa, um a um, os autos digitais dos processos informados, usando a sessão do PJe (1º grau – TJPI) já aberta no navegador.",
+  "permissions": ["scripting", "tabs", "downloads", "storage"],
+  "host_permissions": ["https://pje.tjpi.jus.br/*"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "Baixar autos do PJe em lote",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+}

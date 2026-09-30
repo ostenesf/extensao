@@ -1,0 +1,57 @@
+PJe TJPI – Baixar autos em lote  (extensão para o Google Chrome)
+=================================================================
+
+O QUE FAZ
+Recebe uma lista de números de processo e, para cada um, repete os mesmos
+passos que você faz à mão no PJe (1º grau – TJPI):
+  1. abre a tela "Consulta processos";
+  2. preenche o número e pesquisa;
+  3. abre o processo;
+  4. clica no botão "Download autos do processo" e depois em DOWNLOAD;
+  5. salva o PDF em  Downloads/PJe-autos/<número do processo>.pdf
+Não usa inteligência artificial nem envia dados para lugar nenhum: tudo acontece
+no seu navegador, com o seu login do PJe.
+
+COMO INSTALAR (uma vez só)
+  1. Descompacte o arquivo .zip numa pasta fixa (ex.: Documentos\pje-baixar-autos).
+     Não apague essa pasta depois: o Chrome carrega a extensão a partir dela.
+  2. No Chrome, digite na barra de endereço:  chrome://extensions
+  3. Ligue a chave "Modo do desenvolvedor" (canto superior direito).
+  4. Clique em "Carregar sem compactação" e escolha a pasta descompactada
+     (a que contém o arquivo manifest.json).
+  5. Clique no ícone de quebra-cabeça da barra do Chrome e fixe
+     "PJe TJPI – Baixar autos em lote".
+
+COMO USAR
+  1. Entre no PJe normalmente (login com certificado/senha) nesse mesmo Chrome.
+  2. Clique no ícone da extensão.
+  3. Cole a lista de processos (um por linha; pode colar de planilha, e-mail etc.).
+  4. Se quiser, ajuste as "Opções do download" (cronologia, expedientes,
+     movimentos, subpasta, intervalo entre processos).
+  5. Clique em "Iniciar". A extensão abre uma aba de trabalho em segundo plano
+     e vai baixando um processo por vez. Pode fechar o painel da extensão;
+     o trabalho continua. Não mexa na aba de trabalho enquanto roda.
+  6. Ao final, "Exportar relatório (CSV)" gera a lista do que foi baixado,
+     do que deu erro e do que não foi encontrado.
+
+BOTÕES
+  Parar ........... termina o processo em andamento e para.
+  Retomar ......... continua de onde parou (pendentes e interrompidos).
+  Repetir falhas .. tenta de novo os que deram erro ou não foram encontrados.
+  Limpar .......... apaga o andamento (os PDFs baixados continuam na pasta).
+
+DICAS E LIMITES
+  * Se a sessão do PJe expirar no meio, a extensão para e avisa. Faça login
+    de novo e clique em "Retomar".
+  * Se o Chrome estiver configurado para "Perguntar onde salvar cada arquivo",
+    desligue essa opção (Configurações > Downloads), senão ele perguntará a
+    cada processo.
+  * Processos muito grandes podem demorar para o PJe gerar o PDF; o tempo
+    máximo de espera é ajustável nas opções.
+  * Funciona para números do TJPI (segmento .8.18.). Processos de outras
+    comarcas do TJPI (ex.: final .0140) também funcionam, desde que você
+    tenha acesso a eles no seu perfil.
+  * Mantenha um intervalo razoável entre os processos (padrão: 5 s) para não
+    sobrecarregar o PJe.
+  * Se o TJPI mudar a tela do PJe (nomes dos campos/botões), a extensão pode
+    parar de funcionar e precisará de ajuste.
