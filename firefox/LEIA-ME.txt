@@ -1,0 +1,128 @@
+PJe TJPI – Baixar autos em lote  (extensão para o Mozilla Firefox)
+==================================================================
+
+O QUE FAZ
+Recebe uma lista de números de processo e, para cada um, repete os mesmos
+passos que você faz à mão no PJe (1º grau – TJPI):
+  1. abre a tela "Consulta processos";
+  2. preenche o número e pesquisa;
+  3. abre o processo;
+  4. clica no botão "Download autos do processo" e depois em DOWNLOAD;
+  5. salva o PDF em  Downloads/PJe-autos/<número do processo>.pdf
+Não usa inteligência artificial nem envia dados para lugar nenhum: tudo acontece
+no seu navegador, com o seu login do PJe.
+
+É a mesma extensão da versão para o Chrome, com as adaptações que o Firefox exige.
+
+REQUISITO
+  * Firefox 140 ou mais recente (inclui o Firefox ESR 140).
+    Para conferir: menu ☰ > Ajuda > Sobre o Firefox.
+
+
+COMO INSTALAR
+-------------
+O Firefox, diferentemente do Chrome, só instala de forma PERMANENTE extensões
+assinadas pela Mozilla. Há três caminhos; escolha um.
+
+  A) TESTE RÁPIDO (temporário – some quando o Firefox é fechado)
+     1. Digite na barra de endereço:  about:debugging#/runtime/this-firefox
+     2. Clique em "Carregar extensão temporária...".
+     3. Escolha o arquivo manifest.json que está dentro desta pasta "firefox".
+     Pronto. Cada vez que o Firefox for reaberto, repita os passos 1 a 3.
+
+  B) INSTALAÇÃO PERMANENTE (recomendado) – assinatura gratuita, uso próprio
+     A extensão NÃO fica pública: a Mozilla só confere e assina o arquivo, que
+     fica disponível apenas para você.
+     1. Gere o .zip (se ainda não tiver o "pje-baixar-autos-firefox.zip"):
+        selecione TODOS os arquivos de dentro da pasta "firefox" (manifest.json,
+        background.js, popup.*, pasta icons…) e compacte-os. Atenção: compacte
+        os arquivos, e não a pasta — o manifest.json tem de ficar na raiz do zip.
+     2. Acesse  https://addons.mozilla.org/developers/  e entre (ou crie) uma
+        conta Mozilla.
+     3. Clique em "Enviar uma nova extensão" e escolha
+        "Por conta própria" (On your own / distribuição fora do site).
+     4. Envie o .zip. A validação costuma levar poucos minutos.
+     5. Baixe o arquivo .xpi assinado que a Mozilla devolver.
+     6. No Firefox, abra  about:addons , clique na engrenagem ⚙ e em
+        "Instalar extensão de arquivo...", escolhendo o .xpi.
+     Depois de instalada assim, a extensão permanece mesmo com o Firefox fechado.
+     Se um dia alterar os arquivos, aumente o número de "version" no
+     manifest.json e envie de novo.
+
+  C) SEM ASSINATURA – somente Firefox ESR, Developer Edition ou Nightly
+     (no Firefox comum essa opção é ignorada)
+     1. Digite  about:config , aceite o aviso.
+     2. Procure  xpinstall.signatures.required  e mude para  false .
+     3. Instale o .zip como no passo B.6 (renomeie para .xpi se preferir).
+     Obs.: em computadores do tribunal essa configuração pode estar bloqueada
+     pela TI; nesse caso use o caminho A ou B.
+
+  Por fim, fixe o ícone: clique no ícone de peça de quebra-cabeça (Extensões)
+  na barra do Firefox, na engrenagem ao lado de "PJe TJPI – Baixar autos em
+  lote" e em "Fixar na barra de ferramentas".
+
+
+COMO USAR
+---------
+  1. Entre no PJe normalmente (login com certificado/senha) nesse mesmo Firefox,
+     numa janela COMUM (não privativa).
+  2. Clique no ícone da extensão.
+  3. Cole a lista de processos (um por linha; pode colar de planilha, e-mail etc.).
+  4. Se quiser, ajuste as "Opções do download" (cronologia, expedientes,
+     movimentos, subpasta, intervalo entre processos).
+  5. Clique em "Iniciar". A extensão abre uma aba de trabalho em segundo plano
+     e vai baixando um processo por vez. Pode fechar o painel da extensão;
+     o trabalho continua. Não mexa na aba de trabalho enquanto roda.
+  6. Ao final, "Exportar relatório (CSV)" gera a lista do que foi baixado,
+     do que deu erro e do que não foi encontrado.
+
+BOTÕES
+  Parar ........... termina o processo em andamento e para.
+  Retomar ......... continua de onde parou (pendentes e interrompidos).
+  Repetir falhas .. tenta de novo os que deram erro ou não foram encontrados.
+  Limpar .......... apaga o andamento (os PDFs baixados continuam na pasta).
+
+Avisos e confirmações (ex.: "Há processos pendentes… Continuar?") aparecem numa
+caixa amarela dentro do próprio painel — o Firefox não mostra as janelinhas de
+confirmação comuns dentro de painéis de extensão.
+
+
+DICAS E LIMITES
+---------------
+  * Se a sessão do PJe expirar no meio, a extensão para e avisa. Faça login
+    de novo e clique em "Retomar".
+  * Se o Firefox estiver configurado para perguntar onde salvar cada arquivo,
+    desligue essa opção: Configurações > Geral > Arquivos e aplicativos >
+    desmarque "Sempre perguntar onde salvar arquivos".
+  * Se, a cada processo, abrir uma aba com o PDF: em Configurações > Geral >
+    Aplicativos, localize "Portable Document Format (PDF)" e escolha
+    "Salvar arquivo".
+  * Janelas privativas: por padrão o Firefox não roda extensões nelas. Use uma
+    janela comum.
+  * Quem usa "contêineres" (Firefox Multi-Account Containers): a aba de
+    trabalho abre no contêiner padrão; faça o login do PJe fora de contêiner.
+  * Processos muito grandes podem demorar para o PJe gerar o PDF; o tempo
+    máximo de espera é ajustável nas opções.
+  * Funciona para números do TJPI (segmento .8.18.). Processos de outras
+    comarcas do TJPI (ex.: final .0140) também funcionam, desde que você
+    tenha acesso a eles no seu perfil.
+  * Mantenha um intervalo razoável entre os processos (padrão: 5 s) para não
+    sobrecarregar o PJe.
+  * Se o TJPI mudar a tela do PJe (nomes dos campos/botões), a extensão pode
+    parar de funcionar e precisará de ajuste.
+
+
+O QUE MUDOU EM RELAÇÃO À VERSÃO DO CHROME (para quem for dar manutenção)
+------------------------------------------------------------------------
+  * manifest.json no formato "Manifest V2" com página de fundo persistente
+    ("persistent": true). No Firefox, o formato V3 usa uma página de fundo que
+    é encerrada após ~30 s sem eventos, o que poderia interromper uma espera
+    longa pela geração do PDF. O V2 continua plenamente suportado pelo Firefox.
+  * Chamadas "chrome.*" trocadas pela API nativa "browser.*" (com Promises).
+  * O código que roda dentro do PJe continua usando scripting.executeScript
+    com world: "MAIN" (disponível no Firefox desde a versão 128, também em V2).
+  * alert()/confirm() substituídos por uma caixa de diálogo dentro do painel.
+  * O relatório CSV passou a ser gerado pela página de fundo (o Firefox fecha o
+    painel ao iniciar um download, o que invalidaria o arquivo gerado nele).
+  * Bloco "browser_specific_settings" com o identificador da extensão, exigido
+    para a assinatura pela Mozilla.
